@@ -20,15 +20,17 @@ const enableScroll = (domId) => {
   /** *取消滑动限制***/
   const selectId = domId || 'app'
   const selectDom = document.getElementById(selectId)
-  var scrollVal = Math.abs(parseFloat(selectDom.style.top))
-  selectDom.style.position = ''
-  selectDom.style.overflow = ''
-  selectDom.style.top = ''
-  if (document.body) {
-    document.body.scrollTop = scrollVal
-  }
-  if (document.documentElement) {
-    document.documentElement.scrollTop = scrollVal
+  if (selectDom && selectDom.style.position === 'fixed') {
+    var scrollVal = Math.abs(parseFloat(selectDom.style.top))
+    selectDom.style.position = ''
+    selectDom.style.overflow = ''
+    selectDom.style.top = ''
+    if (document.body) {
+      document.body.scrollTop = scrollVal
+    }
+    if (document.documentElement) {
+      document.documentElement.scrollTop = scrollVal
+    }
   }
 }
 
